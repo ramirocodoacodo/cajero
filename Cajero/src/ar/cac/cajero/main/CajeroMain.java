@@ -5,6 +5,8 @@
  */
 package ar.cac.cajero.main;
 
+import ar.cac.cajero.view.LoginView;
+
 /**
  *
  * @author alumno
@@ -16,6 +18,7 @@ public class CajeroMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new LoginView().setVisible(true);
     }
     
 }
