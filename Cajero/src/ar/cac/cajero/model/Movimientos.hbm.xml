@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2018 20:22:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ar.cac.cajero.model.Movimientos" table="movimientos" catalog="cajero" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="Id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cuentas" class="ar.cac.cajero.model.Cuentas" fetch="select">
+            <column name="Cuenta_Id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tiposMovimiento" class="ar.cac.cajero.model.TiposMovimiento" fetch="select">
+            <column name="Tipo_Movimiento_Id" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="Fecha" length="19" not-null="true" />
+        </property>
+        <property name="saldoAnterior" type="big_decimal">
+            <column name="Saldo_Anterior" precision="18" not-null="true" />
+        </property>
+        <property name="importe" type="big_decimal">
+            <column name="Importe" precision="18" not-null="true" />
+        </property>
+        <property name="saldoPosterior" type="big_decimal">
+            <column name="Saldo_Posterior" precision="18" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2018 20:22:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ar.cac.cajero.model.Clientes" table="clientes" catalog="cajero" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="50" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="50" not-null="true" />
+        </property>
+        <property name="dni" type="int">
+            <column name="DNI" not-null="true" />
+        </property>
+        <property name="cuil" type="java.lang.Integer">
+            <column name="CUIL" unique="true" />
+        </property>
+        <property name="fechaNacimiento" type="timestamp">
+            <column name="FechaNacimiento" length="19" />
+        </property>
+        <property name="habilitado" type="java.lang.Boolean">
+            <column name="Habilitado" />
+        </property>
+        <set name="cuentases" table="cuentas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cliente_Id" not-null="true" />
+            </key>
+            <one-to-many class="ar.cac.cajero.model.Cuentas" />
+        </set>
+        <one-to-one name="loginData" class="ar.cac.cajero.model.LoginData"></one-to-one>
+    </class>
+</hibernate-mapping>

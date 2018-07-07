@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 06/07/2018 20:22:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="ar.cac.cajero.model.LoginData" table="login_data" catalog="cajero" optimistic-lock="version">
+        <id name="clienteId" type="int">
+            <column name="Cliente_Id" />
+            <generator class="foreign">
+                <param name="property">clientes</param>
+            </generator>
+        </id>
+        <one-to-one name="clientes" class="ar.cac.cajero.model.Clientes" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>
